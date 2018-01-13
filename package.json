@@ -1,0 +1,17 @@
+{
+  "name": "Cryptolytics",
+  "version": "0.0.1",
+  "description": "Crypto Trading Analysis",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Thys Smit",
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "express": "^4.16.2",
+    "restler": "^3.4.0",
+    "vue": "^2.5.13"
+  }
+}

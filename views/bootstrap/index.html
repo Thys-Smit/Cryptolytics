@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>CRYPTOLYTICS</title>
+
+    <meta name="description" content="Crypto Analyzer">
+    <meta name="author" content="Thys Smit">
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/style.css" rel="stylesheet">
+	<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+	<script src="https://cdn.jsdelivr.net/npm/vue-resource@1.3.5"></script>
+
+  </head>
+  <body>
+	<div class="container-fluid" id="app">
+	<nav class="navbar navbar-default navbar-inverse" role="navigation">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+				 <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+			</button> <a class="navbar-brand" href="#">CRYPTOLYTICS</a>
+		</div>
+		
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			<ul class="nav navbar-nav navbar-right">
+				<li class="active">
+					<a id="navBTC" href="#">BTC : {{ currentBTCValue }}</a>
+				</li>
+				<!-- #region -->
+				<!--
+				<li>
+					<a href="#">Link</a>
+				</li>
+				<li class="dropdown">
+					 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown<strong class="caret"></strong></a>
+					<ul class="dropdown-menu">
+						<li>
+							<a href="#">Action</a>
+						</li>
+						<li>
+							<a href="#">Another action</a>
+						</li>
+						<li>
+							<a href="#">Something else here</a>
+						</li>
+						<li class="divider">
+						</li>
+						<li>
+							<a href="#">Separated link</a>
+						</li>
+						<li class="divider">
+						</li>
+						<li>
+							<a href="#">One more separated link</a>
+						</li>
+					</ul>
+				</li>
+			-->
+			<!-- #endregion -->
+			</ul>
+						
+			<!--
+			<form class="navbar-form navbar-left" role="search">
+				<div class="form-group">
+					<input type="text" class="form-control">
+				</div> 
+				<button type="submit" class="btn btn-default">
+					Submit
+				</button>
+			</form>
+
+			
+			<ul class="nav navbar-nav navbar-right">
+				<li>
+					<a href="#">Link</a>
+				</li>
+				<li class="dropdown">
+					 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown<strong class="caret"></strong></a>
+					<ul class="dropdown-menu">
+						<li>
+							<a href="#">Action</a>
+						</li>
+						<li>
+							<a href="#">Another action</a>
+						</li>
+						<li>
+							<a href="#">Something else here</a>
+						</li>
+						<li class="divider">
+						</li>
+						<li>
+							<a href="#">Separated link</a>
+						</li>
+					</ul>
+				</li>
+			</ul>
+		-->
+		</div>
+	</nav>
+    
+	<div class="row">
+		<div class="col-md-12">
+			<div class="row" >
+				<div class="col-md-3 valueHeader" id="valueHeaderBTC">
+						<h3 class="text-center">
+							BTC
+						</h3>
+						<h4 class="text-center">
+						{{accBTCValue}}
+						</h4>
+				</div>
+				<div class="col-md-3 valueHeader" id="valueHeaderETH">
+						<h3 class="text-center">
+							ETH
+						</h3>
+						<h4 class="text-center">
+						{{accETHValue}}
+						</h4>
+				</div>
+				<div class="col-md-3 valueHeader" id="valueHeaderZAR">
+						<h3 class="text-center">
+							ZAR
+						</h3>
+						<h4 class="text-center">
+						{{accZARValue}}
+						</h4>
+				</div>
+				<div class="col-md-3 valueHeader" id="valueHeaderTotal">
+						<h3 class="text-center">
+							TOTAL
+						</h3>
+						<h4 class="text-center">
+						{{accTotalZARValue}}
+						</h4>
+				</div>
+			</div>
+			
+			<div class="row">
+				<!--Tile 1-->
+				<div class="col-md-4 calculationCard">
+					<h3 class="text-center cardValues">{{currentValue1}}</h3>
+					<h4 class="text-center cardValues">{{currentMargin1}}</h4>
+					<form class="form-horizontal" role="form">
+							<label for="inputAmountZAR1" class="col-sm-4 control-label">
+								Amount ZAR :
+							</label>
+							<div class="col-sm-8 calculationForm">
+								<input type="text" class="form-control" id="inputAmountZAR1" v-model="inputModelAmountZAR1">
+							</div>
+							<label for="inputAmountBTC1" class="col-sm-4 control-label">
+									Amount BTC :
+								</label>
+								<div class="col-sm-8 calculationForm">
+									<input type="text" class="form-control" id="inputAmountBTC1" v-model="inputModelAmountBTC1">
+								</div>
+
+							<label for="inputAmountFee1" class="col-sm-4 control-label">
+								Fee % :
+							</label>
+							<div class="col-sm-2 calculationForm">
+								<input type="text" class="form-control" id="inputAmountFee1" v-model="inputModelAmountFee1">
+								
+							</div>
+							<label>
+									Fee Value : {{feeValue1}}
+							</label>
+							<label>
+								BTC Value : {{btcValue1}}
+							</label>
+							<label>
+								ZAR Value : {{zarValue1}}
+							</label>
+						
+							<div class="col-sm-offset-2 col-sm-10">
+								<button @click="updateTestData">
+									Save
+								</button>
+							</div>
+						
+					</form>
+				</div>
+				<!--Tile 2-->
+				<div class="col-md-4 calculationCard">
+					<h3 class="text-center cardValues">{{currentValue2}}</h3>
+					<h4 class="text-center cardValues">{{currentMargin2}}</h4>
+					<form class="form-horizontal" role="form">
+							<label for="inputAmountZAR2" class="col-sm-4 control-label">
+								Amount ZAR :
+							</label>
+							<div class="col-sm-8 calculationForm">
+								<input type="text" class="form-control" id="inputAmountZAR2" v-model="inputModelAmountZAR2">
+							</div>
+							<label for="inputAmountBTC2" class="col-sm-4 control-label">
+									Amount BTC :
+								</label>
+								<div class="col-sm-8 calculationForm">
+									<input type="text" class="form-control" id="inputAmountBT2C" v-model="inputModelAmountBTC2">
+								</div>
+
+							<label for="inputAmountFee2" class="col-sm-4 control-label">
+								Fee % :
+							</label>
+							<div class="col-sm-2 calculationForm">
+								<input type="text" class="form-control" id="inputAmountFee2" v-model="inputModelAmountFee2">
+								
+							</div>
+							<label>
+								Fee Value : {{feeValue2}}
+							</label>
+							<label>
+								BTC Value : {{btcValue2}}
+							</label>
+							
+					</form>
+				</div>
+				<!--Tile 3-->
+				<div class="col-md-4 calculationCard">
+						<h3 class="text-center cardValues">{{currentValue3}}</h3>
+						<h4 class="text-center cardValues">{{currentMargin3}}</h4>
+						<form class="form-horizontal" role="form">
+	
+								<label for="inputAmountZAR3" class="col-sm-4 control-label">
+									Amount ZAR :
+								</label>
+								<div class="col-sm-8 calculationForm">
+									<input type="text" class="form-control" id="inputAmountZAR3" v-model="inputModelAmountZAR3">
+								</div>
+								<label for="inputAmountBTC3" class="col-sm-4 control-label">
+										Amount BTC :
+									</label>
+									<div class="col-sm-8 calculationForm">
+										<input type="text" class="form-control" id="inputAmountBTC3" v-model="inputModelAmountBTC3">
+									</div>
+	
+								<label for="inputAmountFee3" class="col-sm-4 control-label">
+									Fee % :
+								</label>
+								<div class="col-sm-2 calculationForm">
+									<input type="text" class="form-control" id="inputAmountFee3" v-model="inputModelAmountFee3">
+									
+								</div>
+								<label>
+										Fee Value : {{feeValue3}}
+								</label>
+								<label>
+									BTC Value : {{btcValue3}}
+								</label>
+								
+						</form>
+					</div>
+			</div>
+			<button class="addButton" @click="getData"></button>
+		</div>
+	</div>
+</div>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+	<script src="js/scripts.js"></script>
+	<script src="updateData.js"></script>
+	
+	<script>
+		var app = new Vue({
+			el: '#app',
+			data: {
+				currentBTCValue: 213200,
+				accBTCValue: 3500,
+				accETHValue: 2000,
+				accZARValue: 2500,
+				inputModelAmountZAR1: 0,
+				inputModelAmountBTC1: 0,
+				inputModelAmountFee1: 0,
+				inputModelAmountZAR2: 0,
+				inputModelAmountBTC2: 0,
+				inputModelAmountFee2: 0,
+				inputModelAmountZAR3: 0,
+				inputModelAmountBTC3: 0,
+				inputModelAmountFee3: 0,
+				feeValue1Data: 0
+			},
+			computed:{
+				currentBTCValue() {
+					return this.currentBTCValue
+				},
+				accTotalZARValue: function(){
+					return this.accBTCValue + this.accETHValue + this.accZARValue
+				},
+				feeValue1: function(){
+					feeValue1Data = ((this.inputModelAmountBTC1 * (this.inputModelAmountFee1 / 100)) * this.inputModelAmountZAR1)
+					return ((this.inputModelAmountBTC1 * (this.inputModelAmountFee1 / 100)) * this.inputModelAmountZAR1) 
+				},
+				btcValue1: function(){
+					return (this.inputModelAmountBTC1 * (this.inputModelAmountFee1 / 100))
+					//return ((this.inputModelAmountBTC1 * this.inputModelAmountZAR1) - this.feeValue1)
+				},
+				zarValue1: function (){
+					var value = (Number.parseInt(this.inputModelAmountZAR1) * Number.parseInt(this.inputModelAmountBTC1)) + Number.parseInt(this.feeValue1)
+					return value
+				},
+				feeValue2: function(){
+					return ((this.inputModelAmountBTC2 * (this.inputModelAmountFee2 / 100)) * this.inputModelAmountZAR2) 
+				},
+				btcValue2: function(){
+					return ((this.inputModelAmountBTC2 * this.inputModelAmountZAR2) - this.feeValue2)
+				},
+				feeValue3: function(){
+					return ((this.inputModelAmountBTC3 * (this.inputModelAmountFee3 / 100)) * this.inputModelAmountZAR3) 
+				},
+				btcValue3: function(){
+					return ((this.inputModelAmountBTC3 * this.inputModelAmountZAR3) - this.feeValue3)
+				},
+				currentValue1: function(){
+					return this.currentBTCValue * (this.inputModelAmountBTC1 - this.btcValue1)
+				},
+				currentValue2: function(){
+					return this.currentBTCValue * this.inputModelAmountBTC2 
+				},
+				currentValue3: function(){
+					return this.currentBTCValue * this.inputModelAmountBTC3
+				},
+				currentMargin1: function(){
+					return  Number.parseInt(this.currentValue1) - Number.parseInt(this.zarValue1)
+				},
+				currentMargin2: function(){
+					return  this.btcValue2 - this.currentValue2 
+				},
+				currentMargin3: function(){
+					return this.btcValue3 - this.currentValue3
+				}
+
+			},
+			methods: {
+				getData() {
+					this.$http.get('/API/getCurrentBTCValue')
+						.then(response =>{
+							return response.json()
+						})
+						.then(data => {
+							this.currentBTCValue = data
+						})
+				},
+				updateTestData() {
+					alert(this["inputModelAmountZAR" + "1"]) 
+				}
+			}
+		})		
+	</script>
+	
+  </body>
+</html>
