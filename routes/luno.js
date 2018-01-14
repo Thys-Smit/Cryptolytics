@@ -19,6 +19,7 @@ var lastResult = 0;
 //     });
 // })
 
+
 router.get('/API/getCurrentBTCValue',function(req, res){
     rest.get('https://api.mybitx.com/api/1/ticker?pair=XBTZAR').on('success', function(result) {
         if (result instanceof Error) {

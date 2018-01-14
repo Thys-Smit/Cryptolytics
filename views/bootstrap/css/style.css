@@ -2,8 +2,16 @@
     box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2), 
     0px 1px 1px 0px rgba(0, 0, 0, 0.14), 
     0px 2px 1px -1px rgba(0, 0, 0, 0.12);
-    margin-right: 5px;
-    margin-left: 5px;
+    margin-top: 2px;
+   /* margin-right: 5px;
+    margin-left: 5px; */
+}
+
+.totalHeader{
+    box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2), 
+    0px 1px 1px 0px rgba(0, 0, 0, 0.14), 
+    0px 2px 1px -1px rgba(0, 0, 0, 0.12);
+    margin-bottom: 10px;
 }
 
 .calculationCard{
@@ -11,11 +19,12 @@
     0px 2px 2px 0px rgba(0, 0, 0, 0.14), 
     0px 3px 2px -2px rgba(0, 0, 0, 0.12);
     background: #c1c1c31f;
-    margin-left: 5px;
-    margin-right: 5px;
+    margin-left: 0.2%;
+    margin-right: 0.2%;
     padding-top: 10px;
     padding-bottom: 20px;
 }
+
 
 .calculationForm{
     padding-bottom: 2px;
@@ -31,12 +40,69 @@
     float: right;
 }
 
+h5{
+    color: white;
+}
+
+[v-cloak] {
+    display: none;
+}
+
+#walletCard {
+    text-align: center;
+    padding-bottom: 5px;
+    box-shadow: 2px 2px 4px 2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 3px 2px -2px rgba(0, 0, 0, 0.12);
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+}
+
+.card{
+    padding-left: 5px;
+    padding-right:5px;
+    margin-bottom: 0px;
+    box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12);        
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+    
+}
+
+#tableEditButton{
+    padding: 0.5px 3px;
+    color: #fff;
+    background-color: #949494b3;
+    border-color: transparent;
+}
+
 .cardValues{
-    color:gray;
+   color:gray;
 }
 
 .col-md-4 {
-    width: 32.5%;
+   /* width: 32.5%; */
 }
 
 h3 {
@@ -69,7 +135,7 @@ h4 {
 }
 
 .col-md-3 {
-    width: 24.2%;
+   /* width: 24.2%; */
 }
 
 #valueHeaderTotal{
@@ -78,21 +144,52 @@ h4 {
 
 #valueHeaderZAR{
     background: teal;
+    border-radius: 10px;
+    
 }
 
 #valueHeaderETH{
     background: darkslateblue;
+    border-radius: 10px;
+    
 }
 
 #valueHeaderBTC{
     background: #12326B;
+    border-radius: 10px;
+    
+}
+
+#valueHeaderLTC{
+    background: brown;
+    border-radius: 10px;
+    
+}
+
+#valueHeaderXRP{
+    background: gray;
+    border-radius: 10px;
+    
+}
+
+#valueHeaderDASH{
+    background: cornflowerblue;
+    border-radius: 10px;
+    
 }
 
 .row{
     margin-bottom: 40px;
+    margin-left: 0;
+    margin-right: 0;
 }
 
 .navbar-inverse {
     background-color: #014f65;
+}
+
+.container-fluid{
+    padding-left: 0px;
+    padding-right: 0px;
 }
 
